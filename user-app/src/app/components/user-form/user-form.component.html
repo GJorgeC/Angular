@@ -1,0 +1,65 @@
+<form (ngSubmit)="onSubmit(userForm)" #userForm="ngForm">
+    <div>
+        <input placeholder="Name" name="name" [(ngModel)]="user.name" class="form-control my-2" required="true" #name="ngModel">
+    </div>
+
+    @if (name.invalid && (name.dirty || name.touched)) {
+        @if (name.errors!['required']) {}
+        <div class="text-danger">
+            Se requiere un nombre para continuar
+        </div>
+    }
+
+    <div>
+        <input placeholder="Lastname" name="lastname" [(ngModel)]="user.lastname" class="form-control my-2" required="true" #lastname="ngModel">
+    </div>
+
+    @if (lastname.invalid && (lastname.dirty || lastname.touched)) {
+        @if (lastname.errors!['required']) {}
+        <div class="text-danger">
+            Se requieren los apellidos para continuar
+        </div>
+    }
+
+    <div>
+        <input placeholder="Email" name="email" [(ngModel)]="user.email" class="form-control my-2" required="true" type="email" #email="ngModel">
+    </div>
+
+    @if (email.invalid && (email.dirty || email.touched)) {
+        @if (email.errors!['required']) {
+        <div class="text-danger">
+            Se requieren un email para continuar
+        </div>
+        }
+    }
+
+    <div>
+        <input placeholder="Username" name="username" [(ngModel)]="user.username" class="form-control my-2" required="true" #username="ngModel">
+    </div>
+
+    @if (username.invalid && (username.dirty || username.touched)) {
+        @if (username.errors!['required']) {
+        <div class="text-danger">
+            Se requieren un nombre de usuario para continuar
+        </div>
+        }
+    }
+
+    <div>
+        <input placeholder="Password" name="password" [(ngModel)]="user.password" class="form-control my-2" required="true" type="password" #password="ngModel">
+    </div>
+    
+    @if (password.invalid && (password.dirty || password.touched)) {
+        @if (password.errors!['required']) {
+        <div class="text-danger">
+            Se requieren una contraseña para continuar
+        </div>
+        }
+    }
+
+    <div>
+        <button type="submit" class="btn btn-primary my-2" [disabled] = "userForm.invalid">
+            Create
+        </button>
+    </div>
+</form>
